@@ -55,7 +55,7 @@
                   <div class="text-gray-600 font-semibold">Anonymous</div>
                 </div>
                 <div class="text-center">
-                  <div class="text-4xl font-black text-purple-600 mb-2">24/7</div>
+                  <div class="text-4xl font-black text-purple-600 mb-2">Learn</div>
                   <div class="text-gray-600 font-semibold">Available</div>
                 </div>
                 <div class="text-center">

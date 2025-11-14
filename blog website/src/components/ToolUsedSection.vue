@@ -145,18 +145,7 @@
             <p class="text-blue-100">Ensuring the highest quality and performance for our users</p>
           </div>
           <div class="flex gap-4">
-            <div class="bg-white/20 backdrop-blur-sm rounded-xl px-6 py-3 text-center">
-              <div class="text-3xl font-black">100%</div>
-              <div class="text-sm text-blue-100">Secure</div>
-            </div>
-            <div class="bg-white/20 backdrop-blur-sm rounded-xl px-6 py-3 text-center">
-              <div class="text-3xl font-black">24/7</div>
-              <div class="text-sm text-blue-100">Available</div>
-            </div>
-            <div class="bg-white/20 backdrop-blur-sm rounded-xl px-6 py-3 text-center">
-              <div class="text-3xl font-black">∞</div>
-              <div class="text-sm text-blue-100">Scalable</div>
-            </div>
+           
           </div>
         </div>
       </div>

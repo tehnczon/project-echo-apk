@@ -41,7 +41,7 @@
             <!-- QR Code Container -->
             <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 mb-6">
               <img 
-                src="/public/images/dowloadqr.png" 
+                src="/images/dowloadqr.png" 
                 alt="Project ECHO Download QR Code"
                 class="w-full h-auto rounded-xl"
               />
@@ -143,34 +143,14 @@
         </div>
       </div>
 
-      <!-- Bottom CTA Banner -->
-      <div class="relative">
-        <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-3xl blur-xl opacity-20"></div>
-        <div class="relative bg-gradient-to-r from-blue-500 to-indigo-600 rounded-3xl p-8 shadow-2xl">
-          <div class="grid md:grid-cols-3 gap-8 text-white text-center">
-            <div class="space-y-2">
-              <div class="text-5xl font-black">10K+</div>
-              <div class="text-blue-100 text-sm uppercase tracking-wide">Active Users</div>
-            </div>
-            <div class="space-y-2">
-              <div class="text-5xl font-black">4.9★</div>
-              <div class="text-blue-100 text-sm uppercase tracking-wide">App Rating</div>
-            </div>
-            <div class="space-y-2">
-              <div class="text-5xl font-black">24/7</div>
-              <div class="text-blue-100 text-sm uppercase tracking-wide">Support Available</div>
-            </div>
-          </div>
-        </div>
-      </div>
+      
 
       <!-- Footer Text -->
       <div class="mt-12 text-center">
         <p class="text-gray-600 text-lg">
-          Join thousands taking control of their HIV care journey
+          Join taking control of their HIV care journey
         </p>
         <p class="text-gray-500 text-sm mt-2">
-          Available on Google Play Store and Apple App Store
         </p>
       </div>
     </div>

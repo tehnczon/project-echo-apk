@@ -51,8 +51,8 @@
           <div class="text-gray-700 font-semibold">Anonymous & Secure</div>
         </div>
         <div class="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 hover:shadow-lg transition-all">
-          <div class="text-4xl font-black text-blue-600 mb-2">24/7</div>
-          <div class="text-gray-700 font-semibold">Access to Support</div>
+          <div class="text-4xl font-black text-blue-600 mb-2">learn</div>
+          <div class="text-gray-700 font-semibold">Access</div>
         </div>
         <div class="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 hover:shadow-lg transition-all">
           <div class="text-4xl font-black text-blue-600 mb-2">Free</div>
