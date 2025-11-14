@@ -11,20 +11,14 @@
         <!-- Front/Outside of Brochure -->
         <div class="w-full">
           <img 
-            src="/images/brochure-outside.png" 
+            src="/images/downloadqr.png" 
             alt="Project ECHO Brochure - Outside"
             class="w-full h-auto rounded-lg shadow-xl"
           />
         </div>
 
         <!-- Inside of Brochure -->
-        <div class="w-full">
-          <img 
-            src="/images/brochure-inside.png" 
-            alt="Project ECHO Brochure - Inside"
-            class="w-full h-auto rounded-lg shadow-xl"
-          />
-        </div>
+       
       </div>
     </div>
   </section>
