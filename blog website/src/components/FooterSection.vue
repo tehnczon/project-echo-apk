@@ -116,7 +116,7 @@
               </div>
               <div>
                 <p class="text-gray-400 text-sm">Email</p>
-                <a href="mailto:info@projectecho.ph" class="text-white hover:text-blue-400 transition-colors">info@projectecho.ph</a>
+                <a href="mailto:projectecho2025@gmail.com" class="text-white hover:text-blue-400 transition-colors">projectecho2025@gmail.com</a>
               </div>
             </li>
             <li class="flex items-start gap-3">
@@ -140,7 +140,7 @@
         <!-- Bottom Bar -->
         <div class="flex flex-col md:flex-row justify-between items-center gap-4">
           <p class="text-gray-400 text-sm text-center md:text-left">
-            © 2024 Project ECHO. All rights reserved. | Made with ❤️ by Assumption College of Davao
+            © 2024 Project ECHO. All rights reserved. | Made with ❤️ by Innoviora from Assumption College of Davao
           </p>
           <div class="flex gap-6">
             <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>

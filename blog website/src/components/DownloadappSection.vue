@@ -41,7 +41,7 @@
             <!-- QR Code Container -->
             <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 mb-6">
               <img 
-                src="/images/dowloadqr.png" 
+                src="/images/Qr.png" 
                 alt="Project ECHO Download QR Code"
                 class="w-full h-auto rounded-xl"
               />

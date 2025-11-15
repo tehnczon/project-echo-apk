@@ -31,6 +31,30 @@
         <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-3xl blur-xl opacity-10"></div>
         <div class="relative bg-white rounded-3xl p-8 shadow-2xl border border-gray-100">
           
+          <!-- Optional Name and Email Fields -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div>
+              <label class="block text-gray-700 font-semibold mb-2 text-sm">Name (Optional)</label>
+              <input
+                v-model="newComment.name"
+                type="text"
+                placeholder="Your name"
+                class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                maxlength="50"
+              />
+            </div>
+            <div>
+              <label class="block text-gray-700 font-semibold mb-2 text-sm">Email (Optional)</label>
+              <input
+                v-model="newComment.email"
+                type="email"
+                placeholder="your.email@example.com"
+                class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                maxlength="100"
+              />
+            </div>
+          </div>
+
           <!-- Rating Section -->
           <div class="mb-6">
             <label class="block text-gray-700 font-bold mb-3">Rate your experience</label>
@@ -157,7 +181,7 @@
 
         <!-- Comment Cards -->
         <div
-          v-for="comment in comments"
+          v-for="comment in displayedComments"
           :key="comment.id"
           class="group bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
         >
@@ -170,7 +194,7 @@
             <div class="flex-1">
               <div class="flex items-center justify-between mb-2">
                 <div class="flex items-center gap-3">
-                  <h4 class="font-bold text-gray-900">Anonymous</h4>
+                  <h4 class="font-bold text-gray-900">{{ comment.name || 'Anonymous' }}</h4>
                   <div class="flex">
                     <svg 
                       v-for="star in 5" 
@@ -195,10 +219,57 @@
                 </span>
               </div>
               <p class="text-gray-700 leading-relaxed">
-                {{ comment.message }}
+                <span v-if="comment.message.length <= 200 || expandedComments[comment.id]">
+                  {{ comment.message }}
+                </span>
+                <span v-else>
+                  {{ comment.message.substring(0, 200) }}...
+                </span>
               </p>
+              <button 
+                v-if="comment.message.length > 200"
+                @click="toggleComment(comment.id)"
+                class="text-blue-600 hover:text-blue-700 font-semibold text-sm mt-2 flex items-center gap-1"
+              >
+                <span>{{ expandedComments[comment.id] ? 'Show less' : 'Read more' }}</span>
+                <svg 
+                  class="w-4 h-4 transition-transform"
+                  :class="expandedComments[comment.id] ? 'rotate-180' : ''"
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
             </div>
           </div>
+        </div>
+
+        <!-- Show More Button -->
+        <div v-if="!showAllComments && hasMoreComments" class="text-center mt-8">
+          <button
+            @click="showAllComments = true"
+            class="px-8 py-3 bg-white text-blue-600 font-bold rounded-xl shadow-lg hover:shadow-xl border-2 border-blue-600 transform hover:-translate-y-1 transition-all flex items-center gap-2 mx-auto"
+          >
+            <span>Show All Comments ({{ comments.length }})</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Show Less Button -->
+        <div v-if="showAllComments && hasMoreComments" class="text-center mt-8">
+          <button
+            @click="showAllComments = false"
+            class="px-8 py-3 bg-white text-gray-600 font-bold rounded-xl shadow-lg hover:shadow-xl border-2 border-gray-300 transform hover:-translate-y-1 transition-all flex items-center gap-2 mx-auto"
+          >
+            <span>Show Less</span>
+            <svg class="w-5 h-5 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
         </div>
       </div>
     </div>
@@ -214,6 +285,8 @@ export default {
   data() {
     return {
       newComment: {
+        name: '',
+        email: '',
         rating: 0,
         message: ''
       },
@@ -221,7 +294,10 @@ export default {
       isSubmitting: false,
       isLoading: true,
       showSuccess: false,
-      errorMessage: ''
+      errorMessage: '',
+      expandedComments: {},
+      displayLimit: 10,
+      showAllComments: false
     };
   },
   computed: {
@@ -229,6 +305,15 @@ export default {
       if (this.comments.length === 0) return 0;
       const sum = this.comments.reduce((acc, comment) => acc + (comment.rating || 0), 0);
       return sum / this.comments.length;
+    },
+    displayedComments() {
+      if (this.showAllComments) {
+        return this.comments;
+      }
+      return this.comments.slice(0, this.displayLimit);
+    },
+    hasMoreComments() {
+      return this.comments.length > this.displayLimit;
     }
   },
   mounted() {
@@ -268,12 +353,16 @@ export default {
       try {
         const commentsRef = collection(db, 'comments');
         await addDoc(commentsRef, {
+          name: this.newComment.name.trim() || null,
+          email: this.newComment.email.trim() || null,
           rating: this.newComment.rating,
           message: this.newComment.message.trim(),
           createdAt: serverTimestamp()
         });
         
         // Clear form
+        this.newComment.name = '';
+        this.newComment.email = '';
         this.newComment.rating = 0;
         this.newComment.message = '';
         
@@ -308,6 +397,10 @@ export default {
         day: 'numeric', 
         year: date.getFullYear() !== now.getFullYear() ? 'numeric' : undefined 
       });
+    },
+    
+    toggleComment(commentId) {
+      this.expandedComments[commentId] = !this.expandedComments[commentId];
     }
   }
 };

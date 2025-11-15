@@ -1,15 +1,39 @@
 <template>
   <div>
+
     <NavigationBar />
-    <HeroSection />
-    <MapSection />
-    <PhoneSection/>
-    <ToolUsedSection/>
-    <DownloadappSection/>
-    <CommentsSection/>
-    <FooterSection/>
+
+    <div id="hero">
+      <HeroSection />
+    </div>
+
+    <div id="map">
+      <MapSection />
+    </div>
+
+    <div id="phone">
+      <PhoneSection />
+    </div>
+
+    <div id="tools">
+      <ToolUsedSection />
+    </div>
+
+    <div id="download">
+      <DownloadappSection />
+    </div>
+
+    <div id="comments">
+      <CommentsSection />
+    </div>
+
+    <div id="footer">
+      <FooterSection />
+    </div>
+
   </div>
 </template>
+
 
 <script>
 import NavigationBar from './components/NavigationBar.vue'
