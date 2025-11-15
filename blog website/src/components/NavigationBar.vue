@@ -101,6 +101,7 @@ export default {
       { name: 'Problem', href: '#map' },
       { name: 'Solution', href: '#phone' },
       { name: 'Tech Stack', href: '#tools' },
+      { name: 'App', href: '#download' },
       { name: 'Feedbacks', href: '#comments' },
       { name: 'Footer', href: '#footer' }
     ]

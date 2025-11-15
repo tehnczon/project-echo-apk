@@ -38,9 +38,13 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
             </svg>
           </button>
-          <button class="bg-white text-gray-900 px-8 py-4 rounded-full text-base font-bold hover:shadow-xl border-2 border-gray-200 hover:border-blue-500 transition-all duration-300">
-            Download App
-          </button>
+          <a 
+  href="https://github.com/tehnczon/project-echo-apk/releases/download/v1.0/base.apk"
+  class="bg-white text-gray-900 px-8 py-4 rounded-full text-base font-bold hover:shadow-xl border-2 border-gray-200 hover:border-blue-500 transition-all duration-300 inline-block"
+>
+  Download App
+</a>
+
         </div>
       </div>
 
