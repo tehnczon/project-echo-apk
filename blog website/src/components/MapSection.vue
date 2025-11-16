@@ -47,7 +47,7 @@
               Why Is <span class="text-red-600">HIV</span> Care Still So Difficult?
             </h3>
             <p class="text-gray-700 text-lg leading-relaxed">
-              The Philippines has the fastest-growing HIV epidemic in the Asia-Pacific. We have free treatment and services, but two major gaps are stopping people from getting help:
+              The Philippines has the fastest-growing HIV epidemic in the Asia-Pacific. We have free treatment and services, but three major gaps are stopping people from getting help:
             </p>
           </div>
 
